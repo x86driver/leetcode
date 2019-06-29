@@ -12,17 +12,15 @@ static inline const char *digit_to_code(const char digit) {
 }
 
 char **output = NULL;
-void backtrack(char **result, char *combination, const char *next_digits) {
+void backtrack(char **result, char *combination, int index, const char *next_digits) {
     if (next_digits[0]) {
         const char *code = digit_to_code(next_digits[0]);
         for (size_t i = 0; i < strlen(code); ++i) {
-            char *next = NULL;
-            asprintf(&next, "%s%c", combination, code[i]);
-            backtrack(result, next, next_digits + 1);
+            combination[index] = code[i];
+            backtrack(result, combination, index + 1, next_digits + 1);
         }
     } else {
         strcpy(*output++, combination);
-        free(combination);
     }
 }
 
@@ -43,7 +41,7 @@ char ** letterCombinations(char * digits, int* returnSize) {
     }
     char *temp = (char*)calloc(groups + 1, sizeof(char));
     output = result;
-    backtrack(result, temp, digits);
+    backtrack(result, temp, 0, digits);
     free(temp);
     return result;
 }
