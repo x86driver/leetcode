@@ -1,4 +1,4 @@
-TARGET = 5 17
+TARGET = 5 17 654
 TARGET += test_5 test_17
 CFLAGS = -Wall -g -std=c11
 CPPFLAGS = -Wall -g
@@ -17,6 +17,9 @@ test_5:test_5.cpp 5.Longest_Palindromic_Substring.c
 
 test_17:test_17.cpp 17.Letter_Combinations_of_a_Phone_Number.c
 	g++ $(CPPFLAGS) -o $@ $^ $(GTEST)
+
+654:654.Maximum_Binary_Tree.c
+	gcc $(CFLAGS) -o $@ $<
 
 clean:
 	rm -rf $(TARGET)
