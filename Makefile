@@ -1,10 +1,17 @@
-TARGET = 5 17 622 654
+TARGET = 5 17 622 654 706
 TARGET += test_5 test_17
+TARGET += list list.o
 CFLAGS = -Wall -g -std=c11
 CPPFLAGS = -Wall -g
 GTEST = `pkg-config gtest --cflags --libs` -DGOOGLE_TEST
 
 all: $(TARGET)
+
+list:lib/list.c lib/list.h
+	gcc $(CFLAGS) -o $@ $<
+
+list.o:lib/list.c lib/list.h
+	gcc -c -D_LIB_ $(CFLAGS) -o $@ $<
 
 5:5.Longest_Palindromic_Substring.c
 	gcc $(CFLAGS) -o $@ $<
