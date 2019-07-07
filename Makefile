@@ -1,5 +1,5 @@
 TARGET = 5 17 622 654 706
-TARGET += test_5 test_17
+TARGET += test_5 test_17 test_706
 TARGET += list list.o
 CFLAGS = -Wall -g -std=c11
 CPPFLAGS = -Wall -g
@@ -30,6 +30,12 @@ test_17:test_17.cpp 17.Letter_Combinations_of_a_Phone_Number.c
 
 654:654.Maximum_Binary_Tree.c
 	gcc $(CFLAGS) -o $@ $<
+
+706:706.Design_HashMap.c
+	gcc $(CFLAGS) -o $@ $^
+
+test_706:test_706.cpp 706.Design_HashMap.c
+	g++ $(CPPFLAGS) -o $@ $^ $(GTEST)
 
 clean:
 	rm -rf $(TARGET)
