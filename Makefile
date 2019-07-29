@@ -1,4 +1,4 @@
-TARGET = 5 17 146 622 654 706
+TARGET = 5 17 138 146 622 654 706
 TARGET += test_5 test_17 test_146 test_706
 TARGET += list list.o hashmap.o queue.o
 CFLAGS = -Wall -g -std=c11
@@ -30,6 +30,9 @@ test_5:test_5.cpp 5.Longest_Palindromic_Substring.c
 
 test_17:test_17.cpp 17.Letter_Combinations_of_a_Phone_Number.c
 	g++ $(CPPFLAGS) -o $@ $^ $(GTEST)
+
+138:138.Copy_List_with_Random_Pointer.cpp
+	g++ $(CPPFLAGS) -o $@ $<
 
 146.o:146.LRU_Cache.c
 	gcc -c $(CFLAGS) -o $@ $<
