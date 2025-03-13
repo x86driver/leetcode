@@ -1,0 +1,15 @@
+class Solution {
+public:
+    double minimumAverage(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        int start = 0;
+        int end = nums.size() - 1;
+        double ans = 10e6;
+        while (start < end) {
+            ans = min(ans, (nums[start] + nums[end]) / 2.0);
+            ++start;
+            --end;
+        }
+        return ans;
+    }
+};
